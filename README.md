@@ -37,7 +37,7 @@ well-scoped interface, which would never be overriden by mistake
 
 Syntax:
 ```ruby
-  Adapters.from(x).to(interface) # cast `x` to `interface`
+  Adapters.cast(x, interface) # cast `x` to `interface`
   adapter.bind(x) # use `adapter` to cast `x` to adapter's interface
   adapter.bind_instances(x) # use `adapter` to cast any instance of `x` to adapter's interface
 
@@ -61,14 +61,15 @@ Syntax:
   # This two methods define interface duck type
 
   class MyAdapter < Adapters::Adapter
+    # Duck interface contains `.interface`, `#cast` and `.new`, taking object
     self.interface = IM # required
 
     def foo # If `foo` is part of interface, it would be taken. Simple as hell
       object.foo
     end
 
-    def cast # Default implementation of the only duck interface
-      interface.interface_methods.map { |m| [m, method(m)] }.to_h
+    def cast # Default implementation, not required when Adapters::Adapter inherited
+      interface.new(interface.interface_methods.map { |m| [m, method(m)] }.to_h)
     end
   end
 ```

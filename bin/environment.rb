@@ -1,6 +1,6 @@
 require 'bundler/setup'
-require 'xpg'
 require 'pry'
+require 'xpg'
 require 'active_support/all'
 
 require 'pathname'

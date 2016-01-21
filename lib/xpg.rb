@@ -1,4 +1,5 @@
 require 'xpg/version'
+require 'adapters'
 
 # XPG gem is an ORM built on the top of ActiveRecord Stack.
 # It allows to write any pg expression in AR way, which make it
