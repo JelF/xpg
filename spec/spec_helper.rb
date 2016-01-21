@@ -1,5 +1,3 @@
-require_relative '../bin/environment'
-
 if ENV['COVERAGE_ROOT']
   require 'simplecov'
   SimpleCov.start do
@@ -9,3 +7,6 @@ if ENV['COVERAGE_ROOT']
     add_filter '/spec/'
   end
 end
+
+require_relative '../bin/environment'
+Dir[XPG::ROOT.join('spec/support/**/*.rb')].each(&method(:require))

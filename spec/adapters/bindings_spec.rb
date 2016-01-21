@@ -8,8 +8,8 @@ describe Adapters::Bindings do
 
     context 'when no way to cast' do
       it 'raises error' do
-        expect { Adapters.cast(1,2) }
-          .to raise_error Adapters::AdapterNotFound, "Unable to cast 1 to 2"
+        expect { Adapters.cast(1, 2) }
+          .to raise_error Adapters::AdapterNotFound, 'Unable to cast 1 to 2'
       end
     end
 
@@ -51,6 +51,17 @@ describe Adapters::Bindings do
         allow(subject).to(
           receive(:instance_bindings)
             .and_return([1.class, 2] => adapter)
+        )
+      end
+
+      include_examples 'it uses adapter'
+    end
+
+    context 'when ancestor bound' do
+      before do
+        allow(subject).to(
+          receive(:instance_bindings)
+            .and_return([Object, 2] => adapter)
         )
       end
 

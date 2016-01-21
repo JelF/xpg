@@ -54,7 +54,7 @@ Syntax:
     end
   end
 
-  IM = Adapters::Interface.new(:foo) # short form
+  IM = Adapters.build_interface(:foo) # short form
 
   IM.new(foo: -> { 123 }) # instance interface without adapter
   IM.interface_methods # get all interface_methods
