@@ -8,7 +8,7 @@ ROOT = Pathname.new(__FILE__).join('..')
 
 YARD::Rake::YardocTask.new(:doc) do |t|
   t.files = Dir[ROOT.join('lib/**/*.rb')]
-  t.options = %w(--private)
+  t.options = %w(--private --tag interface_method:Interface\ methods)
 end
 
 RuboCop::RakeTask.new

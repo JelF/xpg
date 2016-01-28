@@ -6,5 +6,8 @@ require 'adapters'
 # much less stunning, than Sequel or other DSL-based ORM.
 # XPG also provides XQuery extension (as for 1.0.0)
 module XPG
-  autoload XPG::ILModel, 'xpg/interfaces/l_model'
+  autoload :ILModel, 'xpg/interfaces'
+  autoload :IRModel, 'xpg/interfaces'
 end
+
+require 'xpg/adapters'

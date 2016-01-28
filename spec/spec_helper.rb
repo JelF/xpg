@@ -9,4 +9,15 @@ if ENV['COVERAGE_ROOT']
 end
 
 require_relative '../bin/environment'
+require 'xpg/rspec_exts'
 Dir[XPG::ROOT.join('spec/support/**/*.rb')].each(&method(:require))
+
+RSpec.configure do |config|
+  dbname = setup_connection!
+  ActiveRecord::Migration.descendants.each { |x| x.new.up }
+  config.after(:suite) { close_connection!(dbname) }
+
+  config.around(:each) do |example|
+    ActiveRecord::Base.transaction(&example)
+  end
+end

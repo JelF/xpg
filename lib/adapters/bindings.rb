@@ -12,7 +12,9 @@ module Adapters
         resolver(from, to).new(from).cast
       end
 
-      # Private api
+      # @api private
+      # @param from object, which could be casted by adapter
+      # @param adapter adapter to use for this object
       def _bind(from, adapter)
         key = [from, adapter.interface]
 
@@ -25,7 +27,9 @@ module Adapters
         end
       end
 
-      # Private api
+      # @api private
+      # @param from object, which could be casted by adapter
+      # @param adapter adapter to use for this object
       def _bind_instances(from, adapter)
         key = [from, adapter.interface]
 

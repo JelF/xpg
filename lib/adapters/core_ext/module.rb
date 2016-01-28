@@ -1,4 +1,4 @@
-# core extensions to Module
+# Core extensions to Module
 class Module
   # bind adapter to from => interface
   # @see Adapters::Adapter#bind

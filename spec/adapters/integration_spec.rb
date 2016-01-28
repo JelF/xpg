@@ -37,7 +37,7 @@ end
 describe 'Integration' do
   def subject(use_instance = false)
     object = use_instance ? instance : from
-    Adapters.cast(object, IExampleInterface)
+    object.cast(IExampleInterface)
   end
 
   let(:from) { Object }
