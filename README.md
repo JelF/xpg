@@ -28,6 +28,16 @@ XPG describes 4 kinds of objects, named Queries, Resolvers, Representations
 and Adapters. Built at the top of ActiveRecord, it could use any abstractions,
 which acts like AR over small set of methods
 
+### Representations
+Representations are basicaly duck-typed models, representing table rows or
+sets of rows. Generaly, there are two interfaces: `LModel`s and `RModel`s
+`LModels` represent `lvalues` (something, could be set).
+`RModels` represent table information, which allows to build expressions
+Syntax:
+```ruby
+  XPG.select(RModel).into(LModel) # => [LModels]
+```
+
 ### Adapters
 
 Adapters is a built-in library, describing sort of interface convertors.
