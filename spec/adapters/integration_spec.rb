@@ -46,15 +46,15 @@ describe 'Integration' do
   context 'when object have no binded ancestor' do
     it 'could not be casted' do
       expect { subject }.to(
-        raise_error Adapters::AdapterNotFound,
-                    'Unable to cast Object to IExampleInterface'
+        raise_error(Adapters::AdapterNotFound,
+                    'Unable to cast Object to IExampleInterface')
       )
     end
 
     specify 'instances could not be casted' do
       expect { subject(true) }.to(
-        raise_error Adapters::AdapterNotFound,
-                    /Unable to cast #<Object:.+> to IExampleInterface/
+        raise_error(Adapters::AdapterNotFound,
+                    /Unable to cast #<Object:.+> to IExampleInterface/)
       )
     end
   end
@@ -68,7 +68,7 @@ describe 'Integration' do
 
     it 'is good' do
       expect(subject.foo).to be_nil
-      expect(subject.foo = (456)).to eq 456
+      expect(subject.public_send(:foo=, 456)).to eq 456
       expect(subject.bar).to eq 123
     end
 
@@ -79,7 +79,7 @@ describe 'Integration' do
 
       it 'is delicious' do
         expect(subject(true).foo).to eq nil
-        expect(subject(true).foo = (222)).to eq 222
+        expect(subject(true).public_send(:foo=, 222)).to eq 222
         expect(subject(true).foo).to eq 222
         expect(subject(true).bar).to eq 547
       end

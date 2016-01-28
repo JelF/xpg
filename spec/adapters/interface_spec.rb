@@ -17,10 +17,8 @@ describe Adapters::Interface do
 
       it 'raises error' do
         expect { subject }
-          .to(
-            raise_error Adapters::IncompleteInterfaceError,
-                        'Missing methods: bar'
-          )
+          .to(raise_error(Adapters::IncompleteInterfaceError,
+                          'Missing methods: bar'))
       end
     end
 
