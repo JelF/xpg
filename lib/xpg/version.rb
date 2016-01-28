@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module XPG
   # Defines XPG version.
   # Major.Major.Minor.Internal
